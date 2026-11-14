@@ -28,9 +28,7 @@ jobs:
         run: curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
       - name: Free port 5432
         run: |
-          sudo systemctl stop postgresql.socket 'postgresql@*.socket' 2>/dev/null || true
-          sudo systemctl stop postgresql.service 'postgresql@*.service' 2>/dev/null || true
-          sudo DEBIAN_FRONTEND=noninteractive apt-get remove --purge -y 'postgresql*' >/dev/null 2>&1 || true
+          sudo systemctl stop postgresql.socket 'postgresql@*.socket' postgresql.service 'postgresql@*.service' 2>/dev/null || true
           sudo fuser -k 5432/tcp 2>/dev/null || true
       - name: Install Flisk
         run: npm install --global @flisk-sh/flisk@latest
@@ -53,9 +51,7 @@ jobs:
         run: curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
       - name: Free port 5432
         run: |
-          sudo systemctl stop postgresql.socket 'postgresql@*.socket' 2>/dev/null || true
-          sudo systemctl stop postgresql.service 'postgresql@*.service' 2>/dev/null || true
-          sudo DEBIAN_FRONTEND=noninteractive apt-get remove --purge -y 'postgresql*' >/dev/null 2>&1 || true
+          sudo systemctl stop postgresql.socket 'postgresql@*.socket' postgresql.service 'postgresql@*.service' 2>/dev/null || true
           sudo fuser -k 5432/tcp 2>/dev/null || true
       - name: Install Flisk
         run: npm install --global @flisk-sh/flisk@latest
